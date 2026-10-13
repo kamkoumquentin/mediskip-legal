@@ -1,0 +1,7 @@
+project_id = "kamsoft_mobile"
+
+[functions.sync-oauth-provider]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true
