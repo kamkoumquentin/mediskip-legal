@@ -305,14 +305,6 @@ export default function ResultsPanel({
             <Ionicons name="chevron-down" size={18} color="#111B21" />
             <Text style={styles.reduceListText}>Réduire</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.footerCloseButton}
-            onPress={onClosePanel}
-            activeOpacity={0.8}
-          >
-            <Ionicons name="close-circle-outline" size={16} color="#EA4335" />
-            <Text style={styles.footerCloseText}>Fermer</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </Animated.View>
@@ -668,9 +660,4 @@ const styles = StyleSheet.create({
   footerActions: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   loadingMoreContainer: { padding: 12, alignItems: 'center', justifyContent: 'center', gap: 6 },
   footerHint: { fontSize: 11, color: '#667781', fontWeight: '500', flex: 1 },
-  footerCloseButton: {
-    flexDirection: 'row', alignItems: 'center', gap: 4,
-    backgroundColor: '#FCE8E6', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12,
-  },
-  footerCloseText: { fontSize: 12, fontWeight: '700', color: '#EA4335' },
 });

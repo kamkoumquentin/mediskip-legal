@@ -1,5 +1,6 @@
 import { WhatsAppColors } from '@/constants/theme';
 import { APP_NAME } from '@/constants/app';
+import { openLegalDocument, PRIVACY_POLICY_URL, TERMS_OF_SERVICE_URL } from '@/utils/legal';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
@@ -209,6 +210,25 @@ export default function AuthFormsView({
                   </TouchableOpacity>
                 )}
               </View>
+              <Text style={styles.legalText}>
+                En continuant, vous acceptez nos{' '}
+                <Text
+                  style={styles.legalLinkText}
+                  accessibilityRole="link"
+                  onPress={() => openLegalDocument(TERMS_OF_SERVICE_URL)}
+                >
+                  Conditions d&apos;utilisation
+                </Text>
+                {' '}et notre{' '}
+                <Text
+                  style={styles.legalLinkText}
+                  accessibilityRole="link"
+                  onPress={() => openLegalDocument(PRIVACY_POLICY_URL)}
+                >
+                  Politique de confidentialité
+                </Text>
+                .
+              </Text>
               <View style={styles.oauthDivider}>
                 <View style={styles.oauthDividerLine} />
                 <Text style={styles.oauthDividerText}>ou avec votre e-mail</Text>
@@ -451,6 +471,17 @@ const styles = StyleSheet.create({
     color: '#23313B',
     fontSize: 14,
     fontWeight: '700',
+  },
+  legalText: {
+    fontSize: 12,
+    color: '#667781',
+    textAlign: 'center',
+    lineHeight: 18,
+    marginTop: -8,
+    marginBottom: 16,
+  },
+  legalLinkText: {
+    textDecorationLine: 'underline',
   },
   oauthDivider: {
     flexDirection: 'row',

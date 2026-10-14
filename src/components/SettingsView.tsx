@@ -1,5 +1,6 @@
 import { WhatsAppColors } from '@/constants/theme';
 import { APP_NAME } from '@/constants/app';
+import { openLegalDocument, PRIVACY_POLICY_URL, TERMS_OF_SERVICE_URL } from '@/utils/legal';
 import { Ionicons } from '@expo/vector-icons';
 import { Alert, Platform, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -238,6 +239,28 @@ export default function SettingsView({
           </View>
         </View>
 
+        <View style={[styles.cardGroup, styles.legalLinksCard]}>
+          <TouchableOpacity
+            style={styles.fieldRow}
+            accessibilityRole="link"
+            onPress={() => openLegalDocument(TERMS_OF_SERVICE_URL)}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.fieldLabel}>{tr("Conditions d'utilisation", 'Terms of Service')}</Text>
+            <Ionicons name="chevron-forward" size={18} color="#8696A0" />
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          <TouchableOpacity
+            style={styles.fieldRow}
+            accessibilityRole="link"
+            onPress={() => openLegalDocument(PRIVACY_POLICY_URL)}
+            activeOpacity={0.8}
+          >
+            <Text style={styles.fieldLabel}>{tr('Politique de confidentialité', 'Privacy Policy')}</Text>
+            <Ionicons name="chevron-forward" size={18} color="#8696A0" />
+          </TouchableOpacity>
+        </View>
+
         {/* Action Dangereuse */}
         {user && (
           <TouchableOpacity style={styles.deleteAccountBtn} onPress={confirmDeleteAccount} activeOpacity={0.8}>
@@ -309,6 +332,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderWidth: 1,
     borderColor: '#E9EDEF',
+  },
+  legalLinksCard: {
+    marginTop: 12,
   },
   fieldRow: {
     flexDirection: 'row',
